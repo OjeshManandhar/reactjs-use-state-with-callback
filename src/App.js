@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // hooks
 import useStateWithCallback from './useStateWithCallback';
@@ -21,8 +21,11 @@ function App() {
     });
   }
 
-  // console.log('state_A:', state_A);
-  // console.log('state_B:', state_B);
+  useEffect(() => console.log('state_A useEffect'), [state_A]);
+  useEffect(() => console.log('state_B useEffect'), [state_B]);
+
+  console.log('state_A:', state_A);
+  console.log('state_B:', state_B);
 
   return (
     <div>

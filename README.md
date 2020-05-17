@@ -1,4 +1,4 @@
-# reactjs-use-state-with-callback
+# reactjs-useState-with-callback
 Using ReactJS useState() hook with callback function when changing its state.
 
 ---
