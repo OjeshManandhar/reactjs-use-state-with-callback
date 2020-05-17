@@ -18,6 +18,8 @@ function useStateWithCallback(initialState = null) {
 
   useEffect(() => {
     if (_callback) {
+      console.log('Callback Effect');
+
       callCallback.current = true;
       _setState(newState.current);
       newState.current = null;
@@ -26,6 +28,8 @@ function useStateWithCallback(initialState = null) {
 
   useEffect(() => {
     if (callCallback.current && _callback) {
+      console.log('State Effect');
+
       _callback();
       _setCallback(null);
       callCallback.current = false;

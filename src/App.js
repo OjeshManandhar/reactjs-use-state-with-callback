@@ -7,6 +7,10 @@ function App() {
   const [state_B, setState_B] = useState(1234567890);
   const [state_A, setState_A] = useStateWithCallback('Ozes');
 
+  function changeState(newValue) {
+    setState_A(newValue);
+  }
+
   function changeStates(newValue) {
     console.log('changeStates');
 
@@ -22,15 +26,26 @@ function App() {
 
   return (
     <div>
-      <strong>state_A:</strong> {state_A} <br />
-      <strong>state_B:</strong> {state_B} <br />
+      <strong>state_A:</strong> {state_A}
+      <br />
+      <strong>state_B:</strong> {state_B}
+      <br />
+      <button
+        type='button'
+        onClick={() =>
+          changeState(state_A === 'Ozes' ? 'Ojesh Manandhar' : 'Ozes')
+        }
+      >
+        Change Name Without Callback
+      </button>
+      <br />
       <button
         type='button'
         onClick={() =>
           changeStates(state_A === 'Ozes' ? 'Ojesh Manandhar' : 'Ozes')
         }
       >
-        Change Name
+        Change Name With Callback
       </button>
     </div>
   );
