@@ -22,7 +22,6 @@ function useStateWithCallback(initialState = null) {
 
       callCallback.current = true;
       _setState(newState.current);
-      newState.current = null;
     }
   }, [_callback]);
 
@@ -30,8 +29,10 @@ function useStateWithCallback(initialState = null) {
     if (callCallback.current && _callback) {
       console.log('State Effect');
 
-      _callback();
+      _callback(newState.current);
+
       _setCallback(null);
+      newState.current = null;
       callCallback.current = false;
     }
   }, [_state, _callback]);

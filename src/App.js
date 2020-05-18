@@ -14,8 +14,10 @@ function App() {
   function changeStates(newValue) {
     console.log('changeStates');
 
-    setState_A(newValue, () => {
+    // The param state_A here is not the one used in useStateWithCallback()
+    setState_A(newValue, (state_A) => {
       console.log('state_A callback');
+      console.log('Value of state_A inside its callback:', state_A);
 
       setState_B(new Date().getSeconds());
     });
@@ -24,8 +26,8 @@ function App() {
   useEffect(() => console.log('state_A useEffect'), [state_A]);
   useEffect(() => console.log('state_B useEffect'), [state_B]);
 
-  console.log('state_A:', state_A);
-  console.log('state_B:', state_B);
+  // console.log('state_A:', state_A);
+  // console.log('state_B:', state_B);
 
   return (
     <div>
