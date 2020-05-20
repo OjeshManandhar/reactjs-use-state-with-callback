@@ -8,7 +8,7 @@ function useStateWithCallback(initialState = null) {
   const [_state, _setState] = useState(initialState);
 
   function setState(state, callback = null) {
-    if (callback) {
+    if (callback && typeof callback === 'function') {
       newState.current = state;
       _setCallback(() => callback);
     } else {
@@ -26,7 +26,7 @@ function useStateWithCallback(initialState = null) {
   }, [_callback]);
 
   useEffect(() => {
-    if (callCallback.current && _callback) {
+    if (callCallback.current && _callback && typeof _callback === 'function') {
       console.log('State Effect');
 
       _callback(newState.current);
